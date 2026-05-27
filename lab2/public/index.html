@@ -1,1 +1,33 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab nr2</title>
+</head>
+<body>
 
+    <h1>Dane studenta:</h1>
+    
+    <ul>
+        <li><strong>Imie:</strong> <span id="imie">load...</span></li>
+        <li><strong>Nazwisko:</strong> <span id="nazwisko">load...</span></li>
+        <li><strong>Index:</strong> <span id="index">load...</span></li>
+    </ul>
+
+    <script>
+        fetch('/api/hello')
+            .then(response => response.json())
+            .then(data => {
+                
+                document.getElementById('imie').textContent = data.imie;
+                document.getElementById('nazwisko').textContent = data.nazwisko;
+                document.getElementById('index').textContent = data.index;
+            })
+            .catch(error => {
+                console.error('Błąd:', error);
+                document.getElementById('imie').textContent = 'Błąd';
+            });
+    </script>
+
+</body>
+</html>
